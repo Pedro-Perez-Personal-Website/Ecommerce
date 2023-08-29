@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Routes, Route } from 'react-router'
 import '../style/index.css'
 //get our fetch functions
 import { getProducts } from '../apiCalls'
+import Navbar from './Navbar'
 
 const App = () => {
   const [products, setProducts] = useState([])
@@ -19,17 +21,9 @@ const App = () => {
   }, [])
 
   return (
-    <div>
-      <p>Hello World</p>
-      {!!products.length &&
-        products.map((el, i) => {
-          return (
-            <div key={i}>
-              <h1>{el.title}</h1>
-            </div>
-          )
-        })}
-    </div>
+    <Routes>
+      <Route path='/' element={<Navbar/>}/>
+    </Routes>
   )
 }
 
