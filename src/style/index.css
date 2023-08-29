@@ -1,6 +1,29 @@
+/*ToC
+1. Body
+2. Navbar
+3. Home
+4. Products
+5. User
+6. Cart
+*/
+/*1. Body-----------------------------------*/
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
+}
+
+/*2. Navbar---------------------------------*/
+nav{
+  background-color: rgb(86, 8, 117);
+  color: aliceblue;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100vw;
+}ol{
+  display: flex;
+  list-style: none;
+  flex-direction: row;
 }
