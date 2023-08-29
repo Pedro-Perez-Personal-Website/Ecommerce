@@ -38,5 +38,23 @@ async function getSpecificCategory(category){
     console.log(res);
     return res;
 }
-getSpecificCategory('jewelery');
+//getSpecificCategory('jewelery');
 
+//2.- Get users-------------------------------------------------
+//all users
+async function getUsers(){
+    const response = await fetch(`${baseUrl}/users`);
+    const res = await response.json();
+    //console.log(res);
+    return res;
+}
+//getUsers();
+
+//single user
+const getSingleUser = async (id)=>{
+    const response = await fetch(`${baseUrl}/users/${id}`);
+    const res = await response.json();
+    console.log(res);
+    return res;
+}
+//getSingleUser(2);
