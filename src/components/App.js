@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Routes, Route } from 'react-router'//get routes
+import { Routes, Route } from 'react-router-dom'//get routes
 import '../style/index.css'
 import Navbar from './Navbar' //import navbar component
 
