@@ -58,3 +58,23 @@ const getSingleUser = async (id)=>{
     return res;
 }
 //getSingleUser(2);
+
+
+//3.- Get kart --------------------------------------------------
+//all products from kart
+const getKart = async ()=>{
+    const response = await fetch(`${baseUrl}/carts`);
+    const res = await response.json();
+    console.log(res);
+    return res;
+}
+//getKart();
+
+//get user kart
+const getUserKart = async (id)=>{
+    const response = await fetch(`${baseUrl}/carts/user/${id}`);
+    const res = await response.json();
+    console.log(res);
+    return res;
+}
+//getUserKart(2);
