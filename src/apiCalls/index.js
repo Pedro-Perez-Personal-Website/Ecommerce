@@ -5,7 +5,7 @@ const baseUrl = "https://fakestoreapi.com";
 
 //1.- Get products!--------------------------------------------
 //get all the products
-async function getProducts(){
+export async function getProducts(){
     try {
         const response = await fetch(`${baseUrl}/products`);
         const res = await response.json();
@@ -18,7 +18,7 @@ async function getProducts(){
 //getProducts();
 
 //by the category
-async function getCategories(){
+export async function getCategories(){
     try {
         const response = await fetch(`${baseUrl}/products/categories`);
         const res = await response.json();
@@ -31,7 +31,7 @@ async function getCategories(){
 //getCategories();
 
 //by id
-async function getProductsById(id){
+export async function getProductsById(id){
     try {
         const response = await fetch(`${baseUrl}/products/${id}`);
         const res = await response.json();
@@ -44,7 +44,7 @@ async function getProductsById(id){
 //getProductsById(2);
 
 //get by specific category
-async function getSpecificCategory(category){
+export async function getSpecificCategory(category){
     try {
         const response = await fetch(`${baseUrl}/products/category/${category}`);
         const res = await response.json();
@@ -58,7 +58,7 @@ async function getSpecificCategory(category){
 
 //2.- Get users-------------------------------------------------
 //all users
-async function getUsers(){
+export async function getUsers(){
     try {
         const response = await fetch(`${baseUrl}/users`);
         const res = await response.json();
@@ -71,7 +71,7 @@ async function getUsers(){
 //getUsers();
 
 //single user
-const getSingleUser = async (id)=>{
+export const getSingleUser = async (id)=>{
     try {
         const response = await fetch(`${baseUrl}/users/${id}`);
         const res = await response.json();
@@ -86,7 +86,7 @@ const getSingleUser = async (id)=>{
 
 //3.- Get kart --------------------------------------------------
 //all products from kart
-const getKart = async ()=>{
+export const getKart = async ()=>{
     try {
         const response = await fetch(`${baseUrl}/carts`);
         const res = await response.json();
@@ -99,7 +99,7 @@ const getKart = async ()=>{
 //getKart();
 
 //get user kart
-const getUserKart = async (id)=>{
+export const getUserKart = async (id)=>{
     try {
         const response = await fetch(`${baseUrl}/carts/user/${id}`);
         const res = await response.json();
