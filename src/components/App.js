@@ -2,13 +2,20 @@ import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'//get routes
 import '../style/index.css'
 import Navbar from './Navbar' //import navbar component
+import Products from './Products'
 
 const App = () => {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);//the navbar will set the categories on the initial state
 
   return (
     <Routes>
       <Route path='/' element={<Navbar/>}/>
+      <Route path='/products' element={<Products 
+                                        products={products} 
+                                        setProducts={setProducts}
+                                        categories={categories}
+                                        setCategories={setCategories}/>}/>
     </Routes>
   )
 }
