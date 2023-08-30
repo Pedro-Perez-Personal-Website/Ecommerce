@@ -10,7 +10,9 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path='/' element={<Navbar/>}/>
+      <Route path='/' element={<Navbar
+                                    setCategories={setCategories}
+                                    categories={categories}/>}/>
       <Route path='/products' element={<Products 
                                         products={products} 
                                         setProducts={setProducts}
