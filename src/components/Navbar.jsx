@@ -1,6 +1,7 @@
 //Navigation bar
 import { getCategories } from "../apiCalls"
 import { useEffect,useState } from "react"
+import { Link, Outlet } from "react-router-dom"
 
 //Sidebar
 const Sidebar = ({categories})=>{
@@ -10,7 +11,7 @@ const Sidebar = ({categories})=>{
            <h4>Categories</h4>
            <ol id='categories'>
             {categories.map((e)=>{
-                return <li>{e}</li>
+                return <Link to={`/products/category/${e}`}>{e}</Link>
             })}
            </ol>
         </div>
@@ -19,10 +20,13 @@ const Sidebar = ({categories})=>{
 
 
 
+const Header = ({setCategories, categories})=>{
 
-export default function Navbar({setCategories, categories}){
-
-    const [sidebar, setSidebar] = useState();
+    const [sidebar, setSidebar] = useState(false);
+    const eventHandler =()=>{//open side
+        console.log("Clicked");
+        setSidebar(!sidebar);
+    }
     
     useEffect(()=>{
         const setData= async()=>{
@@ -37,17 +41,35 @@ export default function Navbar({setCategories, categories}){
     },[])  
 
     return(
+        <>
         <nav>
-            <Sidebar categories={categories}/>
+            <button onClick={eventHandler}></button>
+            {sidebar && <Sidebar categories={categories}/>}
             <label>Search:
                 <input type="text" />
             </label>
             <ol>
-                <li>Home</li>
-                <li>Products</li>
-                <li>User</li>
+                <Link to={'/'}>Home</Link>
+                <Link to={'/products'}>Products</Link>
+                <Link to={'/user'}>User</Link>
             </ol>
             <span>kart</span>
         </nav>
+        </>
     )
 }
+
+
+
+export default function Navbar({setCategories, categories}){
+
+    return(
+        <div>
+            <Header setCategories={setCategories} categories={categories}/>
+            <Outlet/>
+        </div>
+    )
+    
+}
+
+export {Header, Sidebar};
