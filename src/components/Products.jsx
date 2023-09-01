@@ -5,11 +5,14 @@ import {getProducts, getCategories} from '../apiCalls'
 //Here well render the products image
 const Gallery = ({products, category})=>{
 
+    const productos = products.filter((item) => item.category == category);
+    console.log(productos);
+
     return(
         <section>
             <h3>{category}</h3>
             <div>
-                {products.map((e,i) =>{//should be a filter method that matches the category
+                {productos.map((e,i) =>{//should be a filter method that matches the category
                 return(
                     <>
                     <span>
