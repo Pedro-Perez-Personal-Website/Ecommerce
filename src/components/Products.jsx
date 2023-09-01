@@ -26,7 +26,7 @@ const Gallery = ({products, category})=>{
 }
 
 //here we have our Products page component!
-export default function Products({products, setProducts, categories, setCategories}){
+export default function Products({products, setProducts,categories}){
 
     useEffect(()=>{
         const setData = async ()=>{
@@ -34,8 +34,7 @@ export default function Products({products, setProducts, categories, setCategori
                 console.log("Were are setting the products..")
                 const res = await getProducts();
                 setProducts(res);
-                const cat = await getCategories();
-                setCategories(cat);
+
             } catch (error) {
                 console.error;
             }
