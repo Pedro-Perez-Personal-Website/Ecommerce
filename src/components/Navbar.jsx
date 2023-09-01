@@ -64,10 +64,10 @@ const Header = ({setCategories, categories})=>{
 export default function Navbar({setCategories, categories}){
 
     return(
-        <div>
+        <>
             <Header setCategories={setCategories} categories={categories}/>
             <Outlet/>
-        </div>
+        </>
     )
     
 }
