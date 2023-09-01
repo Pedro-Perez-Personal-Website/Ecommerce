@@ -4,6 +4,7 @@ import '../style/index.css'
 import Navbar from './Navbar' //import navbar component
 import Productos from '../pages/Productos'
 import Home from '../pages/Home'
+import User from '../pages/User'
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -20,6 +21,7 @@ const App = () => {
                                         setProducts={setProducts}
                                         categories={categories}
                                         />}/>
+      <Route path='user' element={<User/>}/>                                  
                                         
       </Route>
     </Routes>
