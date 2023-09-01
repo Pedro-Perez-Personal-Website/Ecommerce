@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'//get routes
 import '../style/index.css'
 import Navbar from './Navbar' //import navbar component
-import Products from './Products'
+import Productos from '../pages/Productos'
+import Home from '../pages/Home'
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -12,12 +13,15 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Navbar
                                     setCategories={setCategories}
-                                    categories={categories}/>}/>
-      <Route path='/products' element={<Products 
+                                    categories={categories}/>}>
+      <Route index element={<Home/>} />                               
+      <Route path='products' element={<Productos 
                                         products={products} 
                                         setProducts={setProducts}
                                         categories={categories}
-                                        setCategories={setCategories}/>}/>
+                                        />}/>
+                                        
+      </Route>
     </Routes>
   )
 }
