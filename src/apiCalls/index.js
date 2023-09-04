@@ -62,7 +62,7 @@ export async function getUsers(){
     try {
         const response = await fetch(`${baseUrl}/users`);
         const res = await response.json();
-        console.log(res);
+        console.log("users:",res);
         return res;
     } catch (error) {
         console.error;
@@ -110,3 +110,25 @@ export const getUserKart = async (id)=>{
     }
 }
 //getUserKart(2);
+
+
+/*Login--------------------------------------------------------------------------- */
+export const login = async(username, password)=>{
+    try {
+        const response = await fetch('https://fakestoreapi.com/auth/login',{
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({
+                username: username,
+                password: password
+            })
+        });
+        const res = await response.json();
+        return res;
+
+    }catch (error) {
+        console.error
+    }
+}
