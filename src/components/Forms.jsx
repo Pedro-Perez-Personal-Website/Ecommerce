@@ -1,9 +1,30 @@
 //here well create our form components for registration
+import { login } from "../apiCalls";
+import { useState } from "react"
 
-export function LoginForm(){
+
+export function LoginForm(props){
+    //state variables
+    const [error, setError]= useState(null);
+
+    
+
+    //submit handler
+    const submitHandler = async(e)=>{
+        e.preventDefault();
+        try {
+            console.log("On submit")
+            const res = await login(props.username, props.password);
+            console.log(res);
+            props.setToken(res.token);
+        } catch (error) {
+            console.error
+        }
+    }
+
 
     return(
-        <form>
+        <form >
             <h4>Login</h4>
             <label htmlFor="">E-mail:
                 <input type="text" />
@@ -11,7 +32,7 @@ export function LoginForm(){
             <label htmlFor="">Password:
                 <input type="text" />
             </label>
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={submitHandler}>Submit</button>
         </form>
     )
 }
