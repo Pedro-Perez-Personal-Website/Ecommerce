@@ -4,14 +4,14 @@ import { useEffect,useState } from "react"
 import { Link, Outlet } from "react-router-dom"
 
 //Sidebar
-const Sidebar = ({categories})=>{
+const Sidebar = ({categories, setCategory})=>{
 
     return(
         <div>
            <h4>Categories</h4>
            <ol id='categories'>
             {categories.map((e)=>{
-                return <Link to={`/products/category/${e}`}>{e}</Link>
+                return <Link to={`/products/category/${e}`} onClick={()=>{setCategory(e)}}>{e}</Link>
             })}
            </ol>
         </div>
@@ -20,7 +20,7 @@ const Sidebar = ({categories})=>{
 
 
 
-const Header = ({setCategories, categories,user, login})=>{
+const Header = ({setCategories, categories,user, login, setCategory})=>{
 
     const [sidebar, setSidebar] = useState(false);
     const eventHandler =()=>{//open side
@@ -44,7 +44,7 @@ const Header = ({setCategories, categories,user, login})=>{
         <>
         <nav>
             <button onClick={eventHandler}></button>
-            {sidebar && <Sidebar categories={categories}/>}
+            {sidebar && <Sidebar categories={categories} setCategory={setCategory}/>}
             <label>Search:
                 <input type="text" />
             </label>
@@ -61,11 +61,11 @@ const Header = ({setCategories, categories,user, login})=>{
 
 
 
-export default function Navbar({setCategories, categories,user,login}){
+export default function Navbar({setCategories, categories,user,login, setCategory}){
 
     return(
         <>
-            <Header setCategories={setCategories} categories={categories} user={user} login={login}/>
+            <Header setCategory={setCategory} setCategories={setCategories} categories={categories} user={user} login={login}/>
             <Outlet/>
         </>
     )

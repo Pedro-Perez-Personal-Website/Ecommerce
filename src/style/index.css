@@ -16,7 +16,7 @@ body {
 
 /*2. Navbar---------------------------------*/
 nav{
-  background-color: rgb(86, 8, 117);
+  background-color: rgb(105, 105, 105);
   color: aliceblue;
   display: flex;
   flex-flow: row wrap;
