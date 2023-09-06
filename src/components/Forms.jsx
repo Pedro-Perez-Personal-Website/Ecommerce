@@ -1,13 +1,15 @@
 //here well create our form components for registration
-import { login } from "../apiCalls";
+import { getUsers, login } from "../apiCalls";
 import { useState } from "react"
+import { useNavigate} from "react-router-dom";
 
 
 export function LoginForm(props){
     //state variables
     const [error, setError]= useState(null);
 
-    
+    //get users
+    const navigate = useNavigate();
 
     //submit handler
     const submitHandler = async(e)=>{
@@ -17,6 +19,15 @@ export function LoginForm(props){
             const res = await login(props.username, props.password);
             console.log(res);
             props.setToken(res.token);
+            const list = await getUsers();
+            console.log("list",list);
+            list.map((e)=>{
+                if(e.username == props.username){
+                    props.setUser(e);
+                    props.setLogin(true);
+                    navigate(`/users/${e.id}`)
+                }
+            })
         } catch (error) {
             console.error
         }
@@ -26,11 +37,11 @@ export function LoginForm(props){
     return(
         <form >
             <h4>Login</h4>
-            <label htmlFor="">E-mail:
-                <input type="text" />
+            <label htmlFor="">Username:
+                <input type="text" onChange={(e)=>{props.setUsername(e.target.value)}}/>
             </label>
             <label htmlFor="">Password:
-                <input type="text" />
+                <input type="text" onChange={(e)=>{props.setPassword(e.target.value)}}/>
             </label>
             <button type="submit" onClick={submitHandler}>Submit</button>
         </form>
