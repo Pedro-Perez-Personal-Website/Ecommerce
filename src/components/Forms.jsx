@@ -23,6 +23,7 @@ export function LoginForm(props){
             console.log("list",list);
             list.map((e)=>{
                 if(e.username == props.username){
+                    console.log("user found!")
                     props.setUser(e);
                     props.setLogin(true);
                     navigate(`/users/${e.id}`)

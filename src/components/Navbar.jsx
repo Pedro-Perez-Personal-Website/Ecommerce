@@ -20,7 +20,7 @@ const Sidebar = ({categories})=>{
 
 
 
-const Header = ({setCategories, categories})=>{
+const Header = ({setCategories, categories,user, login})=>{
 
     const [sidebar, setSidebar] = useState(false);
     const eventHandler =()=>{//open side
@@ -51,7 +51,7 @@ const Header = ({setCategories, categories})=>{
             <ol>
                 <Link to={'/'}>Home</Link>
                 <Link to={'/products'}>Products</Link>
-                <Link to={'/user'}>User</Link>
+                {login ? <Link to={`/users/${user.id}`}>User</Link> : <Link to={`/login`}>Login</Link>}
             </ol>
             <span>kart</span>
         </nav>
@@ -61,11 +61,11 @@ const Header = ({setCategories, categories})=>{
 
 
 
-export default function Navbar({setCategories, categories}){
+export default function Navbar({setCategories, categories,user,login}){
 
     return(
         <>
-            <Header setCategories={setCategories} categories={categories}/>
+            <Header setCategories={setCategories} categories={categories} user={user} login={login}/>
             <Outlet/>
         </>
     )

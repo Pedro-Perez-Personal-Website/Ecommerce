@@ -11,11 +11,14 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);//the navbar will set the categories on the initial state
   const [user, setUser] = useState({});
+  const [login, setLogin] = useState(false);
   return (
     <Routes>
       <Route path='/' element={<Navbar
                                     setCategories={setCategories}
-                                    categories={categories}/>}>
+                                    categories={categories}
+                                    user={user}
+                                    login={login}/>}>
       <Route index element={<Home/>} />                               
       <Route path='products' element={<Productos 
                                         products={products} 
@@ -23,7 +26,8 @@ const App = () => {
                                         categories={categories}
                                         />}/>
       <Route path='login' element={<Login
-                                        setUser={setUser}/>}/>   
+                                        setUser={setUser}
+                                        setLogin={setLogin}/>}/>   
       <Route path='users/:id' element={<User
                                           user={user}
                                           setUser={setUser}/>}/>                                                                      
