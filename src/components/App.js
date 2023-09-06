@@ -10,7 +10,7 @@ import Login from '../pages/Login'
 const App = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);//the navbar will set the categories on the initial state
-
+  const [user, setUser] = useState({});
   return (
     <Routes>
       <Route path='/' element={<Navbar
@@ -22,9 +22,11 @@ const App = () => {
                                         setProducts={setProducts}
                                         categories={categories}
                                         />}/>
-      <Route path='login' element={<Login/>}/>   
-      <Route path='user' element={<User/>}/>                              
-                                        
+      <Route path='login' element={<Login
+                                        setUser={setUser}/>}/>   
+      <Route path='users/:id' element={<User
+                                          user={user}
+                                          setUser={setUser}/>}/>                                                                      
       </Route>
     </Routes>
   )
