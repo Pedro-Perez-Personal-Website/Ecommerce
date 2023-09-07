@@ -7,6 +7,7 @@ import Home from '../pages/Home'
 import User from '../pages/User'
 import Login from '../pages/Login'
 import Category from '../pages/Category'
+import Producto from '../pages/Producto'
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -21,6 +22,7 @@ const App = () => {
                                     categories={categories}
                                     user={user}
                                     login={login}
+                                    setProducts={setProducts}
                                     setCategory={setCategory}/>}>
       <Route index element={<Home/>} />                               
       <Route path='products' element={<Productos 
@@ -35,7 +37,9 @@ const App = () => {
                                           user={user}
                                           setUser={setUser}/>}/>     
       <Route path='products/category/:category' element={<Category
-                                                            category={category}/>}/>                                                                 
+                                                            category={category}/>}/>
+      <Route path='products/:id' element={<Producto
+                                                  products={products}/>}/>                                                                                                                      
       </Route>
     </Routes>
   )

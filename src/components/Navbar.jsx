@@ -1,5 +1,5 @@
 //Navigation bar
-import { getCategories } from "../apiCalls"
+import { getCategories, getProducts } from "../apiCalls"
 import { useEffect,useState } from "react"
 import { Link, Outlet } from "react-router-dom"
 
@@ -20,7 +20,7 @@ const Sidebar = ({categories, setCategory})=>{
 
 
 
-const Header = ({setCategories, categories,user, login, setCategory})=>{
+const Header = ({setCategories, categories,user, login, setCategory, setProducts})=>{
 
     const [sidebar, setSidebar] = useState(false);
     const eventHandler =()=>{//open side
@@ -33,6 +33,8 @@ const Header = ({setCategories, categories,user, login, setCategory})=>{
             try {
                 const res = await getCategories();
                 setCategories(res);
+                const pro = await getProducts();
+                setProducts(pro);
             } catch (error) {
                 console.error
             }
@@ -61,11 +63,17 @@ const Header = ({setCategories, categories,user, login, setCategory})=>{
 
 
 
-export default function Navbar({setCategories, categories,user,login, setCategory}){
+export default function Navbar({setCategories, categories,user,login, setCategory, setProducts}){
 
     return(
         <>
-            <Header setCategory={setCategory} setCategories={setCategories} categories={categories} user={user} login={login}/>
+            <Header 
+                setCategory={setCategory} 
+                setCategories={setCategories} 
+                categories={categories} 
+                user={user}
+                setProducts={setProducts} 
+                login={login}/>
             <Outlet/>
         </>
     )

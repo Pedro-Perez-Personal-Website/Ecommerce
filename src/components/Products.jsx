@@ -1,5 +1,5 @@
 //here we will render our categories
-
+import Product from "./Product";
 
 //Here well render the products image
 const Gallery = ({products, category})=>{
@@ -17,7 +17,7 @@ const Gallery = ({products, category})=>{
                         <p>Nombre de Producto</p>
                         <p>{e.price}</p>
                     </span>
-                
+                    //<Product product={e}/>
                 )
                 })}
             </div>
