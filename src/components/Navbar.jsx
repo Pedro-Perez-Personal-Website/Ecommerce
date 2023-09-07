@@ -2,7 +2,7 @@
 import { getCategories, getProducts } from "../apiCalls"
 import { useEffect,useState } from "react"
 import { Link, Outlet } from "react-router-dom"
-
+import Kart from "./Kart"
 //Sidebar
 const Sidebar = ({categories, setCategory})=>{
 
@@ -55,7 +55,7 @@ const Header = ({setCategories, categories,user, login, setCategory, setProducts
                 <Link to={'/products'}>Products</Link>
                 {login ? <Link to={`/users/${user.id}`}>User</Link> : <Link to={`/login`}>Login</Link>}
             </ol>
-            <span>kart</span>
+            <Kart/>
         </nav>
         </>
     )
