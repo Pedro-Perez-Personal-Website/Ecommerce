@@ -45,7 +45,9 @@ const Header = ({setCategories, categories,user, login, setCategory, setProducts
     return(
         <>
         <nav>
-            <button onClick={eventHandler}></button>
+            <button onClick={eventHandler} >
+                <img src='https://github.com/Pedro-Perez-Personal-Website/Ecommerce/blob/dev-navbar/src/images/sidemenu.png?raw=true' alt="" />
+            </button>
             {sidebar && <Sidebar categories={categories} setCategory={setCategory}/>}
             <label>Search:
                 <input type="text" />
@@ -55,7 +57,7 @@ const Header = ({setCategories, categories,user, login, setCategory, setProducts
                 <Link to={'/products'}>Products</Link>
                 {login ? <Link to={`/users/${user.id}`}>User</Link> : <Link to={`/login`}>Login</Link>}
             </ol>
-            <Kart/>
+            <Kart user={user}/>
         </nav>
         </>
     )
