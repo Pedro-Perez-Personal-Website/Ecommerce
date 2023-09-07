@@ -22,7 +22,7 @@ export default function Producto(props){
             }
         }
         setData();
-    },[]);
+    },[params]);//added dependency to track the params
 
     return(
         <>
