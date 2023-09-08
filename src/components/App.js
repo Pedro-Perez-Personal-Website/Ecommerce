@@ -8,6 +8,7 @@ import User from '../pages/User'
 import Login from '../pages/Login'
 import Category from '../pages/Category'
 import Producto from '../pages/Producto'
+import Header from './Header'
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -15,15 +16,18 @@ const App = () => {
   const [user, setUser] = useState({});
   const [login, setLogin] = useState(false);
   const [category, setCategory] = useState("");
+  const [kart, setKart] = useState({});
   return (
     <Routes>
-      <Route path='/' element={<Navbar
+      <Route path='/' element={<Header
                                     setCategories={setCategories}
                                     categories={categories}
                                     user={user}
                                     login={login}
                                     setProducts={setProducts}
-                                    setCategory={setCategory}/>}>
+                                    setCategory={setCategory}
+                                    setKart={setKart}
+                                    kart={kart}/>}>
       <Route index element={<Home/>} />                               
       <Route path='products' element={<Productos 
                                         products={products} 
