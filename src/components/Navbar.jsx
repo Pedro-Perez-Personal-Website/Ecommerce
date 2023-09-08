@@ -1,9 +1,10 @@
 //Navigation bar
-import { getCategories, getProducts } from "../apiCalls"
-import { useEffect,useState } from "react"
-import { Link, Outlet } from "react-router-dom"
+import { useState } from "react"
+import { Link } from "react-router-dom"
 import Kart from "./Kart"
-//Sidebar
+
+
+//Sidebar ------------------------------------------------------------------------
 const Sidebar = ({categories, setCategory})=>{
 
     return(
@@ -18,32 +19,16 @@ const Sidebar = ({categories, setCategory})=>{
     )
 }
 
-
-
-const Header = ({setCategories, categories,user, login, setCategory, setProducts})=>{
+//navbar-----------------------------------------------------------------------------------
+export default function Navbar({setCategories, categories,user, login, setCategory, setProducts, kart}){
 
     const [sidebar, setSidebar] = useState(false);
     const eventHandler =()=>{//open side
         console.log("Clicked");
         setSidebar(!sidebar);
     }
-    
-    useEffect(()=>{
-        const setData= async()=>{
-            try {
-                const res = await getCategories();
-                setCategories(res);
-                const pro = await getProducts();
-                setProducts(pro);
-            } catch (error) {
-                console.error
-            }
-        }
-        setData();
-    },[])  
 
     return(
-        <>
         <nav>
             <button onClick={eventHandler} >
                 <img src='https://github.com/Pedro-Perez-Personal-Website/Ecommerce/blob/dev-navbar/src/images/sidemenu.png?raw=true' alt="" />
@@ -57,29 +42,10 @@ const Header = ({setCategories, categories,user, login, setCategory, setProducts
                 <Link to={'/products'}>Products</Link>
                 {login ? <Link to={`/users/${user.id}`}>User</Link> : <Link to={`/login`}>Login</Link>}
             </ol>
-            <Kart user={user}/>
+            <Kart user={user} kart={kart}/>
         </nav>
-        </>
     )
 }
 
 
-
-export default function Navbar({setCategories, categories,user,login, setCategory, setProducts}){
-
-    return(
-        <>
-            <Header 
-                setCategory={setCategory} 
-                setCategories={setCategories} 
-                categories={categories} 
-                user={user}
-                setProducts={setProducts} 
-                login={login}/>
-            <Outlet/>
-        </>
-    )
-    
-}
-
-export {Header, Sidebar};
+export {Sidebar};
