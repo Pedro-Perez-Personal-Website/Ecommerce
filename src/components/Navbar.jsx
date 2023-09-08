@@ -7,13 +7,13 @@ import Kart from "./Kart"
 const Sidebar = ({categories, setCategory})=>{
 
     return(
-        <div>
+        <div id="sidebar">
            <h4>Categories</h4>
-           <ol id='categories'>
+           
             {categories.map((e)=>{
                 return <Link to={`/products/category/${e}`} onClick={()=>{setCategory(e)}}>{e}</Link>
             })}
-           </ol>
+           
         </div>
     )
 }
