@@ -17,7 +17,7 @@ const Gallery = ({products, category})=>{
                 
                     <span key={i} onClick={()=>{nav(`/products/${e.id}`)}}>{//when product clicked send to product details
                     }   <img src={e.image} alt={e.title}/>
-                        <p>Nombre de Producto</p>
+                        <p>{e.title}</p>
                         <p>{e.price}</p>
                     </span>
                     //<Product product={e}/>

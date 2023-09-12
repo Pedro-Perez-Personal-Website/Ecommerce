@@ -3,22 +3,22 @@ import { useParams } from "react-router"
 import { getSingleUser } from "../apiCalls";
 
 export default function User(props){
-    let params = useParams();
-    console.log(params);
+    // let params = useParams();
+    // console.log(params);
 
-    useEffect(()=>{
-        const setData = async()=>{
-            try {
-                console.log("getting user....");
-                const response = await getSingleUser(params.id);//send the id to the api
-                console.log("Single user:",response);
+    // useEffect(()=>{
+    //     const setData = async()=>{
+    //         try {
+    //             console.log("getting user....");
+    //             const response = await getSingleUser(params.id);//send the id to the api
+    //             console.log("Single user:",response);
 
-            } catch (error) {
-                console.error
-            }
-        }
-        setData();
-    },[]);
+    //         } catch (error) {
+    //             console.error
+    //         }
+    //     }
+    //     setData();
+    // },[]);
 
     return(
         <>
