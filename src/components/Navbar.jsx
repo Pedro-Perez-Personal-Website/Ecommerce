@@ -20,7 +20,7 @@ const Sidebar = ({categories, setCategory})=>{
 }
 
 //navbar-----------------------------------------------------------------------------------
-export default function Navbar({setCategories, categories,user, login, setCategory, setProducts, kart}){
+export default function Navbar(props){
 
     const [sidebar, setSidebar] = useState(false);
     const eventHandler =()=>{//open side
@@ -33,16 +33,16 @@ export default function Navbar({setCategories, categories,user, login, setCatego
             <button onClick={eventHandler} >
                 <img src='https://github.com/Pedro-Perez-Personal-Website/Ecommerce/blob/dev-navbar/src/images/sidemenu.png?raw=true' alt="" />
             </button>
-            {sidebar && <Sidebar categories={categories} setCategory={setCategory}/>}
+            {sidebar && <Sidebar categories={props.categories} setCategory={props.setCategory}/>}
             <label>Search:
                 <input type="text" />
             </label>
             <ol>
                 <Link to={'/'}>Home</Link>
                 <Link to={'/products'}>Products</Link>
-                {login ? <Link to={`/users/${user.id}`}>User</Link> : <Link to={`/login`}>Login</Link>}
+                {props.login ? <Link to={`/users/${props.user.id}`}>{props.user.id}</Link> : <Link to={`/login`}>Login</Link>}
             </ol>
-            <Kart user={user} kart={kart}/>
+            <Kart user={props.user} kart={props.kart} login={props.login}/>
         </nav>
     )
 }
