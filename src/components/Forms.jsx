@@ -1,36 +1,42 @@
 //here well create our form components for registration
-import { getUsers, login } from "../apiCalls";
+import { getUserKart, getUsers, login } from "../apiCalls";
 import { useState } from "react"
 import { useNavigate} from "react-router-dom";
 
 
+// Login using a post request
 export function LoginForm(props){
     //state variables
     const [error, setError]= useState(null);
 
-    //get users
+    //declare navigation hook
     const navigate = useNavigate();
 
     //submit handler
     const submitHandler = async(e)=>{
         e.preventDefault();
         try {
-            console.log("On submit")
+            console.log("On submit")//send user name and password
             const res = await login(props.username, props.password);
-            console.log(res);
-            props.setToken(res.token);
-            const list = await getUsers();
-            console.log("list",list);
-            list.map((e)=>{
-                if(e.username == props.username){
-                    console.log("user found!")
-                    props.setUser(e);
-                    props.setLogin(true);
-                    navigate(`/users/${e.id}`)
-                }
-            })
+            console.log("response:", res);
+            props.setToken("token:",res.token);//if we get a token ..
+            if (props.token){
+                console.log("user match")
+                const list = await getUsers();//get users
+                console.log("list of users:", list);
+                console.log("loop tru the user list and find the user");
+                const u = list.find((user)=> user.username === props.username);
+                console.log("User found:", u)
+                props.setLogin(true);
+                props.setUser(u);
+                console.log("User id:", props.user)
+                const kar = await getUserKart(props.user.id);
+                console.log("carrito:",kar)
+                navigate(`/users/${props.user.id}`)//send to the user page
+            }
         } catch (error) {
-            console.error
+            setError(console.error);
+            alert(error);
         }
     }
 

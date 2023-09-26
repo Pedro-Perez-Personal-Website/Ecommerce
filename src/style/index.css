@@ -26,6 +26,23 @@ nav{
   display: flex;
   list-style: none;
   flex-direction: row;
+}span#counter{
+  border-radius: 100%;
+  background-color: red;
+  border:5px red solid; 
+  position:static;
+
+}#sidebar{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: gray;
+  width: 300px;
+  height: 500px;
+}#kart{
+  display: flex;
+  flex-direction: row;
 }
 
 
@@ -41,3 +58,4 @@ img{
 }span{
   background-color: gray;
 }
+
