@@ -40,9 +40,9 @@ export default function Navbar(props){
             <ol>
                 <Link to={'/'}>Home</Link>
                 <Link to={'/products'}>Products</Link>
-                {props.login ? <Link to={`/users/${props.user.id}`}>{props.user.id}</Link> : <Link to={`/login`}>Login</Link>}
+                {props.login ? <Link to={`/users/${props.user.id}`}>{props.user.username}</Link> : <Link to={`/login`}>Login</Link>}
             </ol>
-            <Kart user={props.user} kart={props.kart} login={props.login}/>
+            <Kart user={props.user} kart={props.kart} login={props.login} products={props.products}/>
         </nav>
     )
 }
