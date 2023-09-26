@@ -9,14 +9,15 @@ import Login from '../pages/Login'
 import Category from '../pages/Category'
 import Producto from '../pages/Producto'
 import Header from './Header'
+import { guest, cart } from '../apiCalls/guest'
 
 const App = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);//the navbar will set the categories on the initial state
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(guest);
   const [login, setLogin] = useState(false);
   const [category, setCategory] = useState("");
-  const [kart, setKart] = useState({});
+  const [kart, setKart] = useState(cart);
   return (
     <Routes>
       <Route path='/' element={<Header
@@ -25,6 +26,7 @@ const App = () => {
                                     user={user}
                                     login={login}
                                     setProducts={setProducts}
+                                    products={products}
                                     setCategory={setCategory}
                                     setKart={setKart}
                                     kart={kart}/>}>
@@ -36,7 +38,10 @@ const App = () => {
                                         />}/>
       <Route path='login' element={<Login
                                         setUser={setUser}
-                                        setLogin={setLogin}/>}/>   
+                                        user={user}
+                                        setLogin={setLogin}
+                                        setKart={setKart}
+                                        kart={kart}/>}/>   
       <Route path='users/:id' element={<User
                                           user={user}
                                           setUser={setUser}/>}/>     
