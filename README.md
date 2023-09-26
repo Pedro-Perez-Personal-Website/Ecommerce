@@ -1,7 +1,37 @@
 # Fullstack ACC Capstone Boilerplate
 
-This boilerplate was created for 2302
+## 1.- Front end 
+  For our Front end we will use React components to render our data and React-Router to navigate thruough our page. We use the FAKEapi to make http requests to our server:GET,POST,PUT,DELETE.
 
-For backend starter see branch 2302-BE
+  ### Components
+  - Navbar
+    - Sidebar
+    - Kart
+    - Query
+  - Products Gallery
+    - By Category
+    - Product
+    - view
+    - Single Product 
+ ### States
+ - Products-> Array of objects
+ - Query -> String
+ - Login -> boolean
+ - Category -> String
+ - ViewSize -> Integer
+ - Filter
+ - User  -> Object
+ - Kart -> Obejct
 
-Use [this API](https://fakestoreapi.com/) while you're building your front end application to reduce blockers due to building a back end at the same time.
+### API Calls
+- getProducts()
+- getProductsById()
+- getByCategory()
+- getUsers()
+- getKart()
+
+
+### CSS id and classes
+  
+
+## 2.- Backend

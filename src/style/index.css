@@ -1,6 +1,61 @@
+/*ToC
+1. Body
+2. Navbar
+3. Home
+4. Products
+5. User
+6. Cart
+*/
+/*1. Body-----------------------------------*/
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
 }
+
+/*2. Navbar---------------------------------*/
+nav{
+  background-color: rgb(105, 105, 105);
+  color: aliceblue;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100vw;
+}ol{
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+}span#counter{
+  border-radius: 100%;
+  background-color: red;
+  border:5px red solid; 
+  position:static;
+
+}#sidebar{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: gray;
+  width: 300px;
+  height: 500px;
+}#kart{
+  display: flex;
+  flex-direction: row;
+}
+
+
+/*4. Products------------------------
+  4.1. Gallery*/
+img{
+  width: 100px;
+  height: 100px;
+}div{
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5px;
+}span{
+  background-color: gray;
+}
+
