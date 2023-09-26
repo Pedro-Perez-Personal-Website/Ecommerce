@@ -1,5 +1,5 @@
 //here well create our form components for registration
-import { getUsers, login } from "../apiCalls";
+import { getUserKart, getUsers, login } from "../apiCalls";
 import { useState } from "react"
 import { useNavigate} from "react-router-dom";
 
@@ -23,16 +23,16 @@ export function LoginForm(props){
             if (props.token){
                 console.log("user match")
                 const list = await getUsers();//get users
-                console.log("list of users:",list);
-                list.map((e)=>{//look for the same username
+                console.log("list of users:", list);
                 console.log("loop tru the user list and find the user");
-                if(e.username == props.username){
-                    console.log("user found")
-                    props.setUser(e);//set user 
-                    props.setLogin(true);//change navigation bar
-                    navigate(`/users/${e.id}`)//send to the user page
-                }
-            })
+                const u = list.find((user)=> user.username === props.username);
+                console.log("User found:", u)
+                props.setLogin(true);
+                props.setUser(u);
+                console.log("User id:", props.user)
+                const kar = await getUserKart(props.user.id);
+                console.log("carrito:",kar)
+                navigate(`/users/${props.user.id}`)//send to the user page
             }
         } catch (error) {
             setError(console.error);
