@@ -16,9 +16,9 @@ export default function Header(props){//props: kart, setKart, setCategories, cat
             let pro = await getProducts();
             console.log("Products:",pro);
             props.setProducts(pro);
-            let kar = await getUserKart(props.user.id);
-            console.log("kart", kar);
-            props.setKart(kar[0]);
+            // let kar = await getUserKart(props.user.id);
+            // console.log("kart:", kar[0]);
+            // props.setKart(kar[0]);
         }
         setData();
     },[props.user]);
@@ -31,9 +31,10 @@ export default function Header(props){//props: kart, setKart, setCategories, cat
                 categories={props.categories} 
                 user={props.user}
                 setProducts={props.setProducts} 
+                products={props.products}
                 login={props.login}
                 kart={props.kart}
-                setKart={props.setKart}/>
+                setKart={props.kart}/>
             <Outlet/>
         </>
     )
