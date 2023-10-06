@@ -12,6 +12,9 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
+}.container{
+  display: flex;
+  flex-flow: row wrap;
 }
 
 /*2. Navbar---------------------------------*/
@@ -43,7 +46,13 @@ nav{
 }#kart{
   display: flex;
   flex-direction: row;
+}#nav-bar{
+  justify-content: space-between;
+}#menu-list{
+  gap: 7px;
+  align-items: center;
 }
+
 
 
 /*4. Products------------------------
@@ -58,4 +67,7 @@ img{
 }span{
   background-color: gray;
 }
-
+.product{
+  flex-flow: row wrap;
+  width: 200px;
+}

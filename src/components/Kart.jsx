@@ -12,11 +12,11 @@ const KartDisplay = (props)=>{
 
     return(
         <div id="kart">
-            {props.kart.products.map((e)=>{
+            {/* {props.kart.products.map((e)=>{
                 return(
                     <p>{e.productId}</p>
-                )
-            })}
+                ) */}
+            
         </div>
     )
 }

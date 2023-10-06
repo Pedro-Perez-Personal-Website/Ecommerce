@@ -29,20 +29,24 @@ export default function Navbar(props){
     }
 
     return(
-        <nav>
+        <nav className="container" id="nav-bar">
             <button onClick={eventHandler} >
-                <img src='https://github.com/Pedro-Perez-Personal-Website/Ecommerce/blob/dev-navbar/src/images/sidemenu.png?raw=true' alt="" />
+                <img src='https://github.com/Pedro-Perez-Personal-Website/Ecommerce/blob/dev-navbar/src/images/sidemenu.png?raw=true' 
+                alt="sidebar"
+                className="button"
+                id="imagenDmenu" />
             </button>
             {sidebar && <Sidebar categories={props.categories} setCategory={props.setCategory}/>}
             <label>Search:
                 <input type="text" />
             </label>
-            <ol>
+            <ol className="container" id="menu-list">
                 <Link to={'/'}>Home</Link>
                 <Link to={'/products'}>Products</Link>
                 {props.login ? <Link to={`/users/${props.user.id}`}>{props.user.username}</Link> : <Link to={`/login`}>Login</Link>}
             </ol>
-            <Kart user={props.user} kart={props.kart} login={props.login} products={props.products}/>
+            <button>kart</button>
+            {/* <Kart user={props.user} kart={props.kart} login={props.login} products={props.products}/> */}
         </nav>
     )
 }
