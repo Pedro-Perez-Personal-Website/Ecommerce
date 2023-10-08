@@ -27,6 +27,8 @@ export default function Navbar(props){
         console.log("Clicked");
         setSidebar(!sidebar);
     }
+    let data = window.localStorage.getItem("loggedIn");
+    console.log("logged in", data);
 
     return(
         <nav className="container" id="nav-bar">
@@ -43,7 +45,7 @@ export default function Navbar(props){
             <ol className="container" id="menu-list">
                 <Link to={'/'}>Home</Link>
                 <Link to={'/products'}>Products</Link>
-                {props.login ? <Link to={`/users/${props.user.id}`}>{props.user.username}</Link> : <Link to={`/login`}>Login</Link>}
+                {data ? <Link to={`/users/${props.user.id}`}>{window.localStorage.getItem("username")}</Link> : <Link to={`/login`}>Login</Link>}
             </ol>
             <button>kart</button>
             {/* <Kart user={props.user} kart={props.kart} login={props.login} products={props.products}/> */}
