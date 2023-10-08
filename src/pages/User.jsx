@@ -1,46 +1,47 @@
-import { useEffect } from "react";
-import { useParams } from "react-router"
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router"
 import { getSingleUser } from "../apiCalls";
+import useLocalStorage from "../components/useLocalStorage";
 
 export default function User(props){
-    // let params = useParams();
-    // console.log(params);
+    const [user, setUser] = useState({});
+    const nav = useNavigate();
 
-    // useEffect(()=>{
-    //     const setData = async()=>{
-    //         try {
-    //             console.log("getting user....");
-    //             const response = await getSingleUser(params.id);//send the id to the api
-    //             console.log("Single user:",response);
+    //logged Out button function
+    const loggedOut = ()=>{
+        window.localStorage.clear();
+        nav('/');
+    }
 
-    //         } catch (error) {
-    //             console.error
-    //         }
-    //     }
-    //     setData();
-    // },[]);
+    useEffect(()=>{
+        const setData = async ()=>{
+            try {
+                const usuario = await getSingleUser(window.localStorage.getItem("localUser"));
+                console.log("local storage:",usuario);
+                console.log("set user:",setUser(usuario));
+                
+                
+            } catch (error) {
+                console.error;
+            }
+        }
+        setData();
+
+    },[]);
 
     return(
         <>
             <section>
-                <h4>{props.user.username}</h4>
-                <ol className="container">
-                    <span className="container">
-                        <li>Name:{props.user.name.firstname}</li>
-                        <li>Lastname:{props.user.name.lastname}</li>
-                    </span>
-                    <span>
-                        <li>Email:{props.user.email}</li>
-                        <li>Password:{props.user.password}</li>
-                        <li>Phone:{props.user.phone}</li>
-                    </span>
-                    <span>
-                        <li>City:{props.user.address.city}</li>
-                        <li>Num:{props.user.address.number}</li>
-                        <li>Street:{props.user.address.street}</li>
-                        <li>Zip:{props.user.address.zipcode}</li>
-                  </span>
+                <h4>User: {user.username}</h4>
+                <ol className="personalInfo">Personal Data:
+                    <br/>
+                    <li>email: {user.email}</li>
+                    <li>password:{user.password}</li>
+
+                   
                 </ol>
+
+                <button onClick={loggedOut}>log out</button>
             </section>
         </>
     )
