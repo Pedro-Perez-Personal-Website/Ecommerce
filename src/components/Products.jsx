@@ -41,3 +41,5 @@ export default function Products({products, category, key}){
         </>
     )
 }//
+
+export {Gallery, Products}
