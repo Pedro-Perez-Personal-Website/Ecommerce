@@ -41,8 +41,8 @@ export function LoginForm(props){
                 props.setUser(u);
                 //
                 console.log("User id:", props.user)
-                const kar = await getUserKart(props.user.id);
-                console.log("carrito:",kar);
+                // const kar = await getUserKart(props.user.id);
+                // console.log("carrito:",kar);
                 navigate(`/users/${props.user.id}`)//send to the user page
             }
         } catch (error) {
