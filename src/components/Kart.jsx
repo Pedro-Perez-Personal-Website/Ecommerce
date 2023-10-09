@@ -1,5 +1,5 @@
 //this is our kart where we will store our quantity and subtotal price
-import { useEffect, useReducer } from "react"
+import { useEffect, useReducer, useState } from "react"
 import { getUserKart } from "../apiCalls";
 import Product from "./Product";
 
@@ -26,10 +26,12 @@ const KartDisplay = (props)=>{
 
 //This is our kart component, an icon that stores the # of items-------------------------
 export default function Kart(props){//props: user,
-    //
-    // props.products.map(e=>{console.log("hello",e.id)});
-    // let p = props.products.find((producto)=>producto.id === 10);
-    // console.log("id:",p);
+
+    const [idNumber, setIdNumber] = useState('');
+
+    useEffect(()=>{
+        
+    },[]);
     return(
         <>
             <button>

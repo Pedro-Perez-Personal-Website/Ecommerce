@@ -34,7 +34,7 @@ export default function Header(props){//props: kart, setKart, setCategories, cat
                 products={props.products}
                 login={props.login}
                 kart={props.kart}
-                setKart={props.kart}/>
+                setKart={props.setKart}/>
             <Outlet/>
         </>
     )
