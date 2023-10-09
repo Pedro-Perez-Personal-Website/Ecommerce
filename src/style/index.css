@@ -12,6 +12,9 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
+}.container{
+  display: flex;
+  flex-flow: row wrap;
 }
 
 /*2. Navbar---------------------------------*/
@@ -42,8 +45,25 @@ nav{
   height: 500px;
 }#kart{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  position:absolute;
+  margin-left: 60%;
+  justify-self: center;
+  margin-top: 50px;
+  background-color: gray;
+  width: 400px;
+  font-size: x-small;
+
+}table, tr, th,td{
+  
+  border: 1px solid black;
+}#nav-bar{
+  justify-content: space-between;
+}#menu-list{
+  gap: 7px;
+  align-items: center;
 }
+
 
 
 /*4. Products------------------------
@@ -58,4 +78,7 @@ img{
 }span{
   background-color: gray;
 }
-
+.product{
+  flex-flow: row wrap;
+  width: 200px;
+}

@@ -15,8 +15,11 @@ const Gallery = ({products, category})=>{
                 {productos.map((e,i) =>{
                 return(
                 
-                    <span key={i} onClick={()=>{nav(`/products/${e.id}`)}}>{//when product clicked send to product details
-                    }   <img src={e.image} alt={e.title}/>
+                    <span key={i} onClick={()=>{nav(`/products/${e.id}`)}}
+                    className="container product"
+                    id={`product-${e.id}`}>{//when product clicked send to product details
+                    }   <img src={e.image} alt={e.title}
+                    id="product"/>
                         <p>{e.title}</p>
                         <p>{e.price}</p>
                     </span>
@@ -38,3 +41,5 @@ export default function Products({products, category, key}){
         </>
     )
 }//
+
+export {Gallery, Products}

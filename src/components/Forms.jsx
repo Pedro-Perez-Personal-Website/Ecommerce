@@ -1,14 +1,18 @@
 //here well create our form components for registration
-import { getUserKart, getUsers, login } from "../apiCalls";
+import { getSingleUser, getUserKart, getUsers, login } from "../apiCalls";
 import { useState } from "react"
 import { useNavigate} from "react-router-dom";
+import useLocalStorage from "./useLocalStorage";
+
 
 
 // Login using a post request
 export function LoginForm(props){
     //state variables
     const [error, setError]= useState(null);
-
+    const [localUser, setLocalUser] = useLocalStorage("localUser", "" );
+    const [localUsername, setLocalUsername] = useLocalStorage("username", props.username);
+    const [loggedIn, setLoggedIn] = useLocalStorage("loggedIn", null);
     //declare navigation hook
     const navigate = useNavigate();
 
@@ -27,11 +31,18 @@ export function LoginForm(props){
                 console.log("loop tru the user list and find the user");
                 const u = list.find((user)=> user.username === props.username);
                 console.log("User found:", u)
+                setLocalUsername(u.username);//username----- persistance
                 props.setLogin(true);
+                setLoggedIn(true);
+                //we find a match to our user so we need to assign it locally 
+                setLocalUser(u.id);//we set our local user 
+                // const usuario = await getSingleUser(localUser);
+                // console.log("Local user id:", usuario);
                 props.setUser(u);
+                //
                 console.log("User id:", props.user)
-                const kar = await getUserKart(props.user.id);
-                console.log("carrito:",kar)
+                // const kar = await getUserKart(props.user.id);
+                // console.log("carrito:",kar);
                 navigate(`/users/${props.user.id}`)//send to the user page
             }
         } catch (error) {
