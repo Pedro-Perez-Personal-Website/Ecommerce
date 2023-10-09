@@ -69,9 +69,9 @@ export function LoginForm(props){
 export function RegisterForm(){
 
     return(
-        <form>
-            <h4>Register</h4>
-            <article>
+        <form className="container-column">
+            
+            <article className="container-column" id="home-registry">
                 <label htmlFor="">Name:
                     <input type="text" name="" id="" />
                 </label>
