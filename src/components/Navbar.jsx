@@ -146,7 +146,7 @@ const Cart = (props)=>{
     <>
         {props.loggedIn && <div id="kart">
                                 <h4>Kart</h4>
-                                <table>
+                                <table className="cartDisplay">
                                     <tr>
                                         <th>Name</th>
                                         <th>Quantity</th>
@@ -167,7 +167,7 @@ const Cart = (props)=>{
                                     return(
                                         <tr>
                                             <td>{props.titles[i]}</td>
-                                            <td>{e.quantity}</td>
+                                            <td><button onClick={()=>{console.log("add 1")}}>+</button>{e.quantity}<button onClick={()=>{console.log("take one")}}>-</button></td>
                                             <td>{props.lista[i]}</td>
                                             
                                         </tr>

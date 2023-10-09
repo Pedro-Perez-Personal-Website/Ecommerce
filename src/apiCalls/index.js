@@ -115,7 +115,7 @@ export const getUserKart = async (id)=>{
 export const addToKart = async (id, cartId, productId, quantity)=>{
     try {
         const response = await fetch(`https://fakestoreapi.com/carts/${cartId}`,{
-            method:"PUT",
+            method:"PATCH",
             body:JSON.stringify(
                 {
                     userId:id,
