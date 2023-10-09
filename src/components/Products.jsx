@@ -11,7 +11,7 @@ const Gallery = ({products, category})=>{
     let nav = useNavigate();
 
     return(
-            <div>
+            <div className="container" id="products">
                 {productos.map((e,i) =>{
                 return(
                 
@@ -34,11 +34,11 @@ const Gallery = ({products, category})=>{
 export default function Products({products, category, key}){
 
     return(
-        <>
+        <div className="container-column">
             <h3>{category}</h3>
             <Gallery category={category} products={products} key={key}/>
 
-        </>
+        </div>
     )
 }//
 

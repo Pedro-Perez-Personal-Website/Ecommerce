@@ -8,6 +8,12 @@ export default function Login(props){
     const [token, setToken]= useState(null);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [openRegister, setOpenRegister] = useState(false);
+
+    const openRegistry = ()=>{
+        console.log("Clicked");
+        setOpenRegister(!openRegister)
+    }
 
     useEffect(()=>{
         try {
@@ -26,21 +32,26 @@ export default function Login(props){
     },[props.user]);
 
     return(
-        <>
+        <div className="container-column">
+            <section className="container-column" id="login">
             <h2>User</h2>
-            <LoginForm  username={username}
-                        setUsername={setUsername} 
-                        password={password}
-                        setPassword={setPassword} 
-                        token={token} 
-                        setToken={setToken}
-                        setUser={props.setUser}
-                        user= {props.user}
-                        setLogin={props.setLogin}
-                        kart={props.kart}
-                        setKart={props.setKart}/>                       
-            <RegisterForm/>
-            
-        </>
+                <LoginForm  username={username}
+                            setUsername={setUsername} 
+                            password={password}
+                            setPassword={setPassword} 
+                            token={token} 
+                            setToken={setToken}
+                            setUser={props.setUser}
+                            user= {props.user}
+                            setLogin={props.setLogin}
+                            kart={props.kart}
+                            setKart={props.setKart}/>   
+            </section>        
+            <section className="container-column" id="register">
+                <p>or register /</p>
+                <button onClick={openRegistry}>here</button>  
+                {openRegister && <RegisterForm/>}
+            </section>         
+        </div>
     )
 }

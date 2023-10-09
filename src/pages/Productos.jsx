@@ -47,10 +47,10 @@ export default function Productos({products, setProducts, categories}){
 
 
     return(
-        <>
+        <div className="container-column">
             <h2>Products</h2>
             
-                <form action="#">
+                <form action="#" id="maxormin">
                     <button onClick={minToMax}>min</button>
                     <button onClick={maxToMin}>max</button>
 
@@ -67,6 +67,6 @@ export default function Productos({products, setProducts, categories}){
                 )
 
             })}
-        </>
+        </div>
     )
 }

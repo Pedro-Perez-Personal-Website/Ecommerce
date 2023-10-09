@@ -106,10 +106,23 @@ img{
   display: flex;
   flex-flow: row wrap;
   gap: 5px;
-}span{
-  background-color: gray;
 }
 .product{
   flex-flow: row wrap;
   width: 200px;
+  background-color: rgb(150, 146, 142);
+
+}div#products{
+  justify-content: center;
+  align-content: center;
+  width: 90%;
+}#maxormin{
+justify-self: flex-end;
+}
+/*register*/
+
+section#register{
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
