@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Link, Navigate } from "react-router-dom"
 import { getKart, getProductsById, getUserKart } from "../apiCalls";
 import Kart from "./Kart"
+import useLocalStorage from "./useLocalStorage";
 
 //navbar-----------------------------------------------------------------------------------
 export default function Navbar(props){
@@ -11,6 +12,7 @@ export default function Navbar(props){
     const [cart, setCart] = useState(false);
     const [list, setList] = useState([]);
     const [titles, setTitles] = useState([]);
+    const [localKart, setLocalKart] = useLocalStorage("kartId", "")
 
 
     const eventHandler =()=>{//open side
@@ -33,6 +35,9 @@ export default function Navbar(props){
                 const kart = await getUserKart(localStorage.getItem('localUser'));
                 console.log("cart:", kart[0]);
                 const carrito = kart[0];
+                setLocalKart(carrito.id)
+
+
                 const productos = carrito.products;
                 let lista = [];
                 let titles = [];

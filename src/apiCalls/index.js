@@ -111,6 +111,29 @@ export const getUserKart = async (id)=>{
 }
 //getUserKart(2);
 
+//update kart
+export const addToKart = async (id, cartId, productId, quantity)=>{
+    try {
+        const response = await fetch(`https://fakestoreapi.com/carts/${cartId}`,{
+            method:"PUT",
+            body:JSON.stringify(
+                {
+                    userId:id,
+                    date:2019-12-10,
+                    products:[{productId:1,quantity:3}]
+                }
+            )
+        });
+        console.log("response:",response);
+        const res = await response.json();
+        console.log("res:",res);
+        console.log("item succesfully added")
+        return res;
+    } catch (error) {
+        console.error
+    }
+}
+
 
 /*Login--------------------------------------------------------------------------- */
 export const login = async(username, password)=>{
