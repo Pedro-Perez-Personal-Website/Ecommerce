@@ -9,6 +9,7 @@ import Login from '../pages/Login'
 import Category from '../pages/Category'
 import Producto from '../pages/Producto'
 import Header from './Header'
+import CheckoutPage from '../pages/CheckoutPage'
 import { guest, cart } from '../apiCalls/guest'
 
 const App = () => {
@@ -48,7 +49,9 @@ const App = () => {
       <Route path='products/category/:category' element={<Category
                                                             category={category}/>}/>
       <Route path='products/:id' element={<Producto
-                                                  products={products}/>}/>                                                                                                                      
+                                                  products={products}/>}/>  
+      <Route path='checkout' element={<CheckoutPage
+                                                    />}/>                                                                                                                    
       </Route>
     </Routes>
   )
