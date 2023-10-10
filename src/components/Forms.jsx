@@ -15,6 +15,7 @@ export function LoginForm(props){
     const [loggedIn, setLoggedIn] = useLocalStorage("loggedIn", null);
     //declare navigation hook
     const navigate = useNavigate();
+    
 
     //submit handler
     const submitHandler = async(e)=>{
@@ -66,10 +67,17 @@ export function LoginForm(props){
     )
 }
 
-export function RegisterForm(){
+export function RegisterForm(props){
+
+    const eventHandler = ()=>{
+        alert("Congrats now log in with : user:johnd    pass:m38rmF$")
+        nav('/login')
+        props.setOpenRegister(!props.openRegister);
+    };
+    const nav = useNavigate();
 
     return(
-        <form className="container-column">
+        <div className="container-column" >
             
             <article className="container-column" id="home-registry">
                 <label htmlFor="">Name:
@@ -90,8 +98,8 @@ export function RegisterForm(){
                 <label htmlFor="">Password:
                     <input type="text" />
                 </label>
-                <button type="submit">Register</button>
+                <button onClick={eventHandler} >Register</button>
             </article>
-        </form>
+        </div>
     )
 }

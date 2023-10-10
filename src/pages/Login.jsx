@@ -35,6 +35,7 @@ export default function Login(props){
         <div className="container-column">
             <section className="container-column" id="login">
             <h2>User</h2>
+                <p>To login use : johnd    m38rmF$</p>
                 <LoginForm  username={username}
                             setUsername={setUsername} 
                             password={password}
@@ -50,7 +51,7 @@ export default function Login(props){
             <section className="container-column" id="register">
                 <p>or register /</p>
                 <button onClick={openRegistry}>here</button>  
-                {openRegister && <RegisterForm/>}
+                {openRegister && <RegisterForm openRegister={openRegister} setOpenRegister={setOpenRegister}/>}
             </section>         
         </div>
     )
