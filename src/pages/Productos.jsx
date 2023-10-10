@@ -7,13 +7,14 @@ import { useEffect, useState } from 'react'
 
 //This will be our Products page
 export default function Productos({products, setProducts, categories}){
-    //event handler
+    //Sort from max # to min
     const maxToMin = ()=>{
         console.log("productos:",products);
         const max = products.sort((a,b)=>b.price - a.price);
         console.log("sorted products:", max);
         setInversa(!inversa);
     }
+    //sort from min to max
     const minToMax = ()=>{
         console.log("productos:",products);
         const max = products.sort((a,b)=>a.price - b.price);
@@ -21,48 +22,25 @@ export default function Productos({products, setProducts, categories}){
         setInversa(!inversa);
 
     }
+    //state variable that saves our boolean value
     const [inversa, setInversa] = useState(true);
-
-    function eventHandler(){
-        console.log("click")
-        console.log(inversa);
-        setInversa(!inversa);
-        return inversa;
-    }
-
-
-    //will render our products on page
-    useEffect(()=>{
-        const setData = async ()=>{
-            try {
-                console.log("hi");
-
-
-            } catch (error) {
-                console.error;
-            }
-        }
-        setData();
-    },[inversa])
 
 
     return(
         <div className="container-column">
             <h2>Products</h2>
-            
-                <form action="#" id="maxormin">
+                <span className="container" id="sort">
                     <button onClick={minToMax}>min</button>
-                    <button onClick={maxToMin}>max</button>
+                    <button onClick={maxToMin}>max</button>  
+                </span>
 
-                </form>
             {categories.map((e,i)=>{
                 return(
                     <>
-                    
-                    <Products 
-                        products={products} 
-                        category={e}
-                        key={i}/>
+                        <Products 
+                            products={products} 
+                            category={e}
+                            key={i}/>
                     </>
                 )
 
