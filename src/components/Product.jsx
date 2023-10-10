@@ -10,13 +10,34 @@ export default function Product(props){
     console.log("user id:",id);
     const cartId = window.localStorage.getItem('kartId')
     console.log("cart id", cartId);
+
+ 
     
     const addCart = async()=>{
         try {
-            console.log("were in!")
-            const cart = await addToKart(id,cartId,props.product.id,1);
-            console.log("product id",props.product.id);
-            console.log("cart requ", cart);
+            console.log("were in!",props.product.id)
+            let item = window.localStorage.getItem(props.product.id);
+            console.log("item",item)
+            if(item){
+                alert("Already in cart")
+            }else{
+                console.log("not register")
+
+                const res = window.localStorage.getItem('listaId');
+                console.log("Response", res);
+
+                let lista = JSON.parse(res);
+                console.log("respuesta de listID",lista);
+
+                lista.push(props.product.id);
+                console.log("Despues:", lista);
+
+                window.localStorage.setItem('listaId', JSON.stringify(lista));
+                window.localStorage.setItem(props.product.id, JSON.stringify(props.product));
+
+            }
+
+
         } catch (error) {
             console.error
         }

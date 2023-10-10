@@ -41,6 +41,7 @@ export function LoginForm(props){
                 // console.log("Local user id:", usuario);
                 props.setUser(u);
                 //
+                window.localStorage.setItem("listaId", JSON.stringify([0]));
                 console.log("User id:", props.user)
                 // const kar = await getUserKart(props.user.id);
                 // console.log("carrito:",kar);

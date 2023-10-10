@@ -2,25 +2,44 @@
 
 import { useEffect, useState } from "react";
 import { getProductsById, getUserKart } from "../apiCalls";
+import { Checkout } from "../components/Checkout"
+import useLocalStorage from "../components/useLocalStorage";
 
 
 
 export default function CheckoutPage(props){
 
-    const [products, setProducts] = useState([])
-    const listOfName = [];
-    const listOfPrice = [];
+
+    const [listOfKart, setListOfKart] = useState([]);//here we will store our products
+
     const cartId = window.localStorage.getItem("kartId");
-    console.log("cart ID:", cartId);
+    const carrito = window.localStorage.getItem("carrito");
+    const car = JSON.parse(carrito);
+
+    console.log("cart ID:", car);
     
     useEffect(()=>{
         const setData = async ()=>{
             try {
-
-                props.cart.products.map((e)=>{
-                    console.log("were in producst");
-                    
+                let list = [];//array where we will store our products
+                let sum = 0;
+                car.map(async (e)=>{
+                console.log("were in product",e.productId);
+                let product = await getProductsById(e.productId);   
+                sum = sum + (e.quantity*product.price);             
+                let item = {
+                    "title":product.title,
+                    "quantity":e.quantity,
+                    "precio":product.price,
+                    "total": e.quantity*product.price,
+                    "id": product.id,
+                    "suma":sum
+                }
+                console.log("Item:",item);
+                list.push(item);
                 })
+                console.log("Lista",list)
+                setListOfKart(list);
                 
             } catch (error) {
                 console.error
@@ -29,35 +48,15 @@ export default function CheckoutPage(props){
         setData();
     },[]);
      
-    console.log("Products->:", products);
+
     
 
     return(
         <>
         <h4>Checkout Process</h4>
-        <table>
-                <tr>
-                    <th>Order</th>
-                </tr>
-                <tr>
-                    <td>Product</td>
-                    <td>Quantity</td>
-                    <td>Price</td>
-                    <td>Total</td>
-                </tr>
-                
-                {props.cart.products.map((e)=>{
-                    console.log("aver :", listOfName)
-                    return(
-                        <tr>
-                            <td>{}</td>
-                            <td><button>+</button>  n  <button>-</button></td>
-                            <td></td>
-                        </tr>
-                    )
-                })}
-                
-            </table>
+        <Checkout listOfKart={listOfKart} />
+        
+        
         </>
     )
 }

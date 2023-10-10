@@ -1,6 +1,6 @@
 //Navigation bar
 import { useEffect, useState } from "react"
-import { Link, Navigate } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import { getKart, getProductsById, getUserKart } from "../apiCalls";
 import Kart from "./Kart"
 import useLocalStorage from "./useLocalStorage";
@@ -13,6 +13,7 @@ export default function Navbar(props){
     const [list, setList] = useState([]);
     const [titles, setTitles] = useState([]);
     const [localKart, setLocalKart] = useLocalStorage("kartId", "")
+    const [car, setCar] = useLocalStorage("carrito", "");
 
 
     const eventHandler =()=>{//open side
@@ -31,40 +32,16 @@ export default function Navbar(props){
     useEffect(()=>{
         const setData = async ()=>{
             try {
-                console.log("we are in!")
-                const kart = await getUserKart(localStorage.getItem('localUser'));
-                console.log("cart:", kart[0]);
-                const carrito = kart[0];
-                setLocalKart(carrito.id)
+                
 
-
-                const productos = carrito.products;
-                let lista = [];
-                let titles = [];
-                productos.map(async (e)=>{
-                let product = await getProductsById(e.productId);
-                console.log("title:",product.price)
-                lista.push(product.price);
-                titles.push(product.title);
-
-                })
-                setList(lista);
-                setTitles(titles);
-                console.log("lista:",lista)
-                let sum = 0;
-                list.map((e)=>{
-                    console.log("precio:", e.price)
-                })
-                console.log("Suma:",sum);
-                props.setKart(carrito);
-                console.log("carrito:", carrito)
-                return carrito;
             } catch (error) {
                 console.error
             }
         }
         setData();
     },[props.login]);
+
+   
 
     return(
         <nav className="container" id="nav-bar">
@@ -113,6 +90,12 @@ const Cart = (props)=>{
 
     const [cart, setCart] = useState({});
     const [products, setProducts] = useState([]);
+
+    const nav = useNavigate();
+    const checkoutProcess = ()=>{
+        nav('/checkout');
+        location.reload();
+    }
 
 
     useEffect(()=>{
@@ -177,7 +160,7 @@ const Cart = (props)=>{
                                 })}
 
                                 </table>
-                                <Link to={'/checkout'}>checkout</Link>
+                                <button onClick={checkoutProcess}>checkout</button>
                             </div>}
     </>  
     )
