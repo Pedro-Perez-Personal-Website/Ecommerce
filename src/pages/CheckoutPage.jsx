@@ -12,50 +12,48 @@ export default function CheckoutPage(props){
 
     const [listOfKart, setListOfKart] = useState([]);//here we will store our products
 
-    const cartId = window.localStorage.getItem("kartId");
-    const carrito = window.localStorage.getItem("carrito");
-    const car = JSON.parse(carrito);
+    const cartIds = window.localStorage.getItem("listaId");
+    console.log("Lista de ids:", cartIds);
+    const car = JSON.parse(cartIds);
+    console.log("cart IDs:", car);
 
-    console.log("cart ID:", car);
-    
-    useEffect(()=>{
-        const setData = async ()=>{
-            try {
-                let list = [];//array where we will store our products
-                let sum = 0;
-                car.map(async (e)=>{
-                console.log("were in product",e.productId);
-                let product = await getProductsById(e.productId);   
-                sum = sum + (e.quantity*product.price);             
-                let item = {
-                    "title":product.title,
-                    "quantity":e.quantity,
-                    "precio":product.price,
-                    "total": e.quantity*product.price,
-                    "id": product.id,
-                    "suma":sum
-                }
-                console.log("Item:",item);
-                list.push(item);
-                })
-                console.log("Lista",list)
-                setListOfKart(list);
-                
-            } catch (error) {
-                console.error
-            }
-        }
-        setData();
-    },[]);
-     
+    //delete
+    const del = (val)=>{
+        console.log("Clicked",val);
+        let item = window.localStorage.getItem(val);
+        console.log("item",item)
 
-    
+    }
+
 
     return(
         <>
         <h4>Checkout Process</h4>
-        <Checkout listOfKart={listOfKart} />
-        
+        <table>
+            <thead>Order Review</thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+            {car.map((e)=>{
+                console.log("Were in car :", e);
+                return(
+                <>
+                    <tr id={e.id}>
+                        <td>{e.product.title}</td>
+                        <td>{e.quantity}</td>
+                        <td>{e.price}</td>
+                        <td>{e.price*e.quantity}</td>
+                        <button>delete</button>
+                    </tr>
+                </>
+                )
+            })}
+
+
+        </table>
         
         </>
     )

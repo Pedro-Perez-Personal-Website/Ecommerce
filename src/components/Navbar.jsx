@@ -91,11 +91,7 @@ const Cart = (props)=>{
     const [cart, setCart] = useState({});
     const [products, setProducts] = useState([]);
 
-    const nav = useNavigate();
-    const checkoutProcess = ()=>{
-        nav('/checkout');
-        location.reload();
-    }
+
 
 
     useEffect(()=>{
@@ -160,7 +156,7 @@ const Cart = (props)=>{
                                 })}
 
                                 </table>
-                                <button onClick={checkoutProcess}>checkout</button>
+                                <Link to='/checkout'>Checkout</Link>
                             </div>}
     </>  
     )

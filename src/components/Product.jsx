@@ -20,6 +20,7 @@ export default function Product(props){
             console.log("item",item)
             if(item){
                 alert("Already in cart")
+
             }else{
                 console.log("not register")
 
@@ -28,11 +29,17 @@ export default function Product(props){
 
                 let lista = JSON.parse(res);
                 console.log("respuesta de listID",lista);
-
-                lista.push(props.product.id);
+                let orden = {
+                    "product":props.product,
+                    "quantity": 1,
+                    "price":props.product.price,
+                    "id":props.product.id
+                }
+                lista.push(orden);
                 console.log("Despues:", lista);
-
                 window.localStorage.setItem('listaId', JSON.stringify(lista));
+                
+
                 window.localStorage.setItem(props.product.id, JSON.stringify(props.product));
 
             }
