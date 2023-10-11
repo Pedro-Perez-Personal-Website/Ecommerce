@@ -1,6 +1,7 @@
 //
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getProductsById, getUserKart } from "../apiCalls";
 import { Checkout } from "../components/Checkout"
 import useLocalStorage from "../components/useLocalStorage";
@@ -26,7 +27,7 @@ export default function CheckoutPage(props){
 
     return(
         <>
-        <h4>Checkout Process</h4>
+        <h4>Kart</h4>
         <table>
             <thead>Order Review</thead>
             <tr>
@@ -59,7 +60,7 @@ export default function CheckoutPage(props){
 
 
         </table>
-        <button>Checkout</button>
+        <Link to={'../kart/checkout'}><button>Checkout</button></Link>
         
         </>
     )

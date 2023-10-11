@@ -11,6 +11,7 @@ import Producto from '../pages/Producto'
 import Header from './Header'
 import CheckoutPage from '../pages/CheckoutPage'
 import { guest, cart } from '../apiCalls/guest'
+import CheckoutProcess from '../pages/CheckoutProcess'
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -51,7 +52,9 @@ const App = () => {
       <Route path='products/:id' element={<Producto
                                                   products={products}/>}/>  
       <Route path='kart' element={<CheckoutPage
-                                                    cart={kart}/>}/>                                                                                                                    
+                                                    cart={kart}/>}/>       
+      <Route path='kart/checkout' element={<CheckoutProcess 
+                                          user={user}/>}/>                                                                                                                                                           
       </Route>
     </Routes>
   )

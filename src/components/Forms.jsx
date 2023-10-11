@@ -39,7 +39,7 @@ export function LoginForm(props){
                 setLocalUser(u.id);//we set our local user 
                 // const usuario = await getSingleUser(localUser);
                 // console.log("Local user id:", usuario);
-                props.setUser(u);
+                window.localStorage.setItem('user', JSON.stringify(u));
                 //
                 window.localStorage.setItem("listaId", JSON.stringify([]));
                 //window.localStorage.setItem("cantidad", JSON.stringify([]));

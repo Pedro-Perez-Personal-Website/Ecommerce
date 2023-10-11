@@ -87,7 +87,11 @@ img#header{
   background-color: rgb(172, 170, 170);
   padding: 10px 30px;
   
-}article#home-registry{
+}#card-form{
+  display: flex;
+  flex-flow: column wrap;
+}
+article#home-registry{
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-end;
