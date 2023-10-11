@@ -95,7 +95,7 @@ const Cart = (props)=>{
     <>
         <div className="container" id="nav-kart">
         <CheckoutPage/>
-        <Link to={'/checkout'}>Checkout</Link>
+        <Link to={'/kart'}><button>View Cart</button></Link>
         </div>
     </>  
     )

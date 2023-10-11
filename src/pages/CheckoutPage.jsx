@@ -59,6 +59,7 @@ export default function CheckoutPage(props){
 
 
         </table>
+        <button>Checkout</button>
         
         </>
     )
