@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { getKart, getProductsById, getUserKart } from "../apiCalls";
+import CheckoutPage from "../pages/CheckoutPage";
 import Kart from "./Kart"
 import useLocalStorage from "./useLocalStorage";
 
@@ -88,76 +89,14 @@ const Sidebar = ({categories, setCategory})=>{
 //kart ------------------------------------
 const Cart = (props)=>{
 
-    const [cart, setCart] = useState({});
-    const [products, setProducts] = useState([]);
-
-
-
-
-    useEffect(()=>{
-        const setData = async ()=>{
-            try {
-                // console.log("hello world", props.cart);
-                // let listOfName = [];
-                // const productos = props.cart.products.map(async (e)=>{
-                // let product = await getProductsById(e.productId);
-                // listOfName.push(product.title);
-                // });
-                // setProducts(listOfName);
-                // console.log("list:",listOfName);
-                
-            } catch (error) {
-                console.error
-            }
-        }
-        setData();
-
-    },[]);
-
-    
-    const list = [];
-    const totales = [];
-    let i = -1;
-    let sum = 0;
 
     
     return(
     <>
-        {props.loggedIn && <div id="kart">
-                                <h4>Kart</h4>
-                                <table className="cartDisplay">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                        
-                                    </tr>
-                                {props.cart.products.map((e)=>{
-                                    console.log("in!", e);
-                                    console.log("producto id:",e.productId);
-                                    console.log("Cantidad:", e.quantity)
-                                    console.log("precio:", props.lista[i])
-                                    console.log("total:", props.lista[i]*e.quantity);
-                                    totales.push(props.lista[i]*e.quantity)
-                                    console.log("titles", props.titles[i])
-                                    console.log("totales", totales)
-                                    
-                                    i++;
-                                    return(
-                                        <tr>
-                                            <td>{props.titles[i]}</td>
-                                            <td><button onClick={()=>{console.log("add 1")}}>+</button>{e.quantity}<button onClick={()=>{console.log("take one")}}>-</button></td>
-                                            <td>{props.lista[i]}</td>
-                                            
-                                        </tr>
-                                        
-                                    )
-                                    
-                                })}
-
-                                </table>
-                                <Link to='/checkout'>Checkout</Link>
-                            </div>}
+        <div className="container" id="nav-kart">
+        <CheckoutPage/>
+        <Link to={'/checkout'}>Checkout</Link>
+        </div>
     </>  
     )
 }
